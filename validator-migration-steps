@@ -1,0 +1,65 @@
+# Before migration
+
+1 - Spin-up new instance
+
+3 - Install gaia v2.0.8 on new instance
+
+4 - Sync new instance
+
+5 - Establish rsync connectivity between new and old instances
+
+6 - Establish rysnc bewtween new validator and chainflow-sentry-200
+
+7 - Confirm priv_validator_key.json and node_key.json on old instance are backed-up
+
+8 - Create .gaiad/data/ backup, excluding priv-validator-state.json file, on new instance, before migration
+
+9 - Continue syncing new instance
+
+10 - Update .gaiad/data/ backup, excluding priv-validator-state.json file, on new instance, before migration
+
+11 - Continue syncing new instance
+
+# During migration
+
+## On old instance
+
+12 - Stop gaiad on old instance
+
+13 - Confirm gaiad is stopped
+
+14 - Disable gaiad.service on old instance
+
+15 - Close port 26656 on old instance
+
+16 - Confirm port 26656 is closed on old instance
+
+17 - Back-up priv_validator_key.json, node_key.json and priv_validator_state.json.
+    
+## On new instance
+
+18 - Confirm new instance synced to height higher than old instance
+
+19 - Stop gaiad on new instance
+
+20 - Close port 26656 on new instance
+
+21 - Disable gaiad.service on new instance
+
+22 - Confirm gaiad on new instance disabled
+
+23 - Migrate priv_validator_key.json, node_key.json and priv-validator-state.json to new instance
+
+24 - Confirm correct versions of priv_validator_key.json, node_key.json and priv-validator-state.json are in place
+
+## On old instance
+
+25 - Confirm old instance is shut down completely
+
+## On new instance
+
+26 - Open port 26656 on new instance
+
+27 - Enable gaiad.service on new instance
+
+28 - Start gaiad on new instance
